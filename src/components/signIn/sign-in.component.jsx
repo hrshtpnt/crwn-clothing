@@ -17,20 +17,25 @@ class SignIn extends Component {
   handleSubmit = async (e) => {
     const { email, password } = this.state;
     e.preventDefault();
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      this.setState({
-        email: "",
-        password: "",
-      });
-    } catch (error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      if (errorCode === "auth/wrong-password") {
-        alert("Wrong password.");
-      } else {
-        alert(errorMessage);
+
+    if (email !== "" && password !== "") {
+      try {
+        await auth.signInWithEmailAndPassword(email, password);
+        this.setState({
+          email: "",
+          password: "",
+        });
+      } catch (error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        if (errorCode === "auth/wrong-password") {
+          alert("Wrong password.");
+        } else {
+          alert(errorMessage);
+        }
       }
+    } else {
+      alert("Please enter the email and password!!");
     }
   };
 
