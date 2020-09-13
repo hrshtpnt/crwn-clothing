@@ -14,13 +14,9 @@ const Header = ({ currentUser }) => {
         <Link to="/shop" className="option">
           SHOP
         </Link>
-      </div>
-      <div className="options">
         <Link to="/contact" className="option">
           CONTACT
         </Link>
-      </div>
-      <div className="options">
         {!currentUser ? (
           <Link to="/signIn" className="option">
             SIGN IN
